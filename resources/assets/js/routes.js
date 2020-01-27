@@ -1,6 +1,6 @@
 
 import Dashboard from './components/admin/DashboardComponent.vue'
-import Profile from './components/admin/ProfileComponent.vue'
+import Category from './components/admin/CategoryComponent.vue'
 
 export const routes = [
     { 
@@ -8,7 +8,7 @@ export const routes = [
        component: Dashboard 
       },
     { 
-      path: '/profile', 
-      component: Profile 
+      path: '/category', 
+      component: Category 
     }
   ]

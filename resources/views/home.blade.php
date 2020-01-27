@@ -53,10 +53,10 @@
           </li>
 
           <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
+            <router-link to="/category" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Profile 
+                Category
               </p>
             </router-link>
           </li>
