@@ -19,6 +19,20 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 
+                        <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th> ID</th>
+                                <th> Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in categorries" :key="item.id">
+                                <td>{{ index + 1}}</td> 
+                                <td>{{ item.name }}</td>
+                            </tr>
+                        </tbody>
+                        </table>
 
                     </div>
                 </div>
@@ -31,6 +45,7 @@
     export default {
         data(){
             return{
+                categorries : {},
                form: new Form({
                     name: '',
                 })
@@ -39,16 +54,29 @@
         methods: {
             addNewCategory(){
                 this.form.post('api/category')
-            .then(function(response){
+            .then(response =>{
                 Toast.fire({
                     icon: 'success',
                     title: 'Category Added successfully'
                     })
+                    this.loadCategory()
             })
             .catch(()=>{
                 console.log('Error....')
             })
+            },
+            loadCategory(){
+                axios.get('api/category')
+                    .then(response =>{
+                        this.categorries = response.data.category
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
             }
+        },
+        created(){
+             this.loadCategory()
         }
     }
 </script>

@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
   
     public function index()
     {
-        //
+        $category = \App\Category::latest()->get();
+
+        return response()->json([
+            'category' => $category
+        ]);
     }
 
     public function store(Request $request)

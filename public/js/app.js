@@ -1987,9 +1987,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      categorries: {},
       form: new Form({
         name: ''
       })
@@ -1997,15 +2012,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addNewCategory: function addNewCategory() {
+      var _this = this;
+
       this.form.post('api/category').then(function (response) {
         Toast.fire({
           icon: 'success',
           title: 'Category Added successfully'
         });
+
+        _this.loadCategory();
       })["catch"](function () {
         console.log('Error....');
       });
+    },
+    loadCategory: function loadCategory() {
+      var _this2 = this;
+
+      axios.get('api/category').then(function (response) {
+        _this2.categorries = response.data.category;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  created: function created() {
+    this.loadCategory();
   }
 });
 
@@ -41587,14 +41618,43 @@ var render = function() {
                   [_vm._v("Submit")]
                 )
               ]
-            )
+            ),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.categorries, function(item, index) {
+                  return _c("tr", { key: item.id }, [
+                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(item.name))])
+                  ])
+                }),
+                0
+              )
+            ])
           ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v(" ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Category")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
