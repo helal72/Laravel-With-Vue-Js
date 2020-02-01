@@ -1,11 +1,11 @@
 
-import Dashboard from './components/admin/DashboardComponent.vue'
+import Tag from './components/admin/TagComponent.vue'
 import Category from './components/admin/CategoryComponent.vue'
 
 export const routes = [
     { 
-      path: '/dashboard',
-       component: Dashboard 
+      path: '/tag',
+       component: Tag 
       },
     { 
       path: '/category', 

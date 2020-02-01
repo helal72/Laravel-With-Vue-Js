@@ -8,7 +8,16 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 require('./routes');
+require('./filter');
 
+//setup vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+import storeData from "./store/index"
+const store = new Vuex.Store(
+   storeData
+)
 //Import Sweetalert2
 import Swal from 'sweetalert2'
 window.Swal = Swal
@@ -46,5 +55,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store,
 });

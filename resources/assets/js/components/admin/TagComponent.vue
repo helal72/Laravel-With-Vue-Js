@@ -3,35 +3,35 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Category </div>
+                    <div class="card-header">Tag </div>
 
                     <div class="card-body">
                        
-                        <form action="" @submit.prevent="addNewCategory" >
+                        <form action="" @submit.prevent="addNewTag" >
                          
-                            <legend> Add New Category</legend>   
+                            <legend> Add New Tag</legend>   
                         <div class="form-group">
-                            <label for="">Category Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Category Name" 
+                            <label for="">Tag Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Tag Name" 
                             v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }">
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 
-                     
+                        
 
                         <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th> ID</th>
-                                <th> Category</th>
+                                <th> Tag</th>
                                 <th> created </th>
                                 <th> Action </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item,index) in loadCategory" :key="item.id">
+                            <tr v-for="(item,index) in loadTag" :key="item.id">
                                 <td>{{ index + 1}}</td> 
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.created_at | formatDate}}</td>
@@ -59,16 +59,17 @@
                 })
             }
         },
+       
         methods: {
-            addNewCategory(){
-                this.form.post('api/category')
+            addNewTag(){
+                this.form.post('api/tag')
             .then(response =>{
                 Toast.fire({
                     icon: 'success',
-                    title: 'Category Added successfully'
+                    title: 'Tag Added successfully'
                     })
 
-                    this.$store.dispatch("allCategoryFromDatabase")
+                    this.$store.dispatch("allTagFromDatabase")
                     this.form.name = ''
             })
             .catch(()=>{
@@ -77,12 +78,12 @@
             },
         },
         computed: {
-            loadCategory(){
-            return this.$store.getters.getCategoryFormGetters
+            loadTag(){
+            return this.$store.getters.getTagFormGetters
         }
         },
         mounted() {
-            this.$store.dispatch("allCategoryFromDatabase")
+            this.$store.dispatch("allTagFromDatabase")
         },
     }
 </script>
