@@ -27,7 +27,7 @@
         "@fortawesome/fontawesome-free": "^5.12.0",
         "admin-lte": "^3.0.2",
         "bs3-table": "0.0.17",
-        "moment": "^2.24.0",
+        "moment": "^2.29.2",
         "ng2-bs3-modal": "^0.15.0",
         "sweetalert2": "^9.7.0",
         "vform": "^1.0.1",
